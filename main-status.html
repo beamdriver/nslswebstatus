@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>NSLS II Main Status</title>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link href="https://fonts.googleapis.com/css?family=Lato|Montserrat" rel="stylesheet">
+
+
+<style type="text/css">
+
+body{
+font-family: 'Lato', sans-serif;
+background: #FEFEFD;
+color: darkblue;
+
+
+}
+
+
+div.main-container{
+margin: 30px auto;
+width:90%;
+max-width:800px;
+border: solid 1px black;
+padding: 0px;
+box-shadow: 10px 10px 5px #888888;
+}
+
+h1{
+text-align:center;
+font-family: 'Montserrat', sans-serif;
+
+}
+
+div.head{
+padding:10px;
+font-size:2em;
+
+}
+
+div.subhead{
+padding:5px 20px;
+font-size:1.5em;
+}
+
+div.stat-panel{
+padding:10px;
+
+
+}
+
+div.ticker{
+
+background: url("images/NSLS2blue1.png");
+padding:8px;
+color: white;
+font-weight:bold;
+
+}
+
+div.message {
+padding: 10px; 
+color: #333333;
+
+}
+
+div.top-bar{
+background: url("images/NSLS2blue1.png");
+}
+
+div.stat-line{
+border-top:2px solid darkblue;
+border-bottom:2px solid darkblue;
+display:flex;
+flex-wrap:wrap;
+margin-top: 15px;
+}
+
+div.opmode{
+background:green;
+flex-grow:1;
+flex-basis: 200px;
+padding:10px;
+border: black solid 1px;
+display:inline-block;;
+color: white;
+order:1;
+}
+
+
+div.shuttermode{
+background:green;
+flex-grow:1;
+flex-basis: 200px;
+padding:10px;
+border: black solid 1px;
+display:inline-block;
+color:white;
+order:2;
+}
+
+.history-graph img{
+max-width:100%;
+
+}
+
+</style>
+
+
+
+
+</head>
+<body>
+
+<div class="main-container">
+<div class="top-bar"><img src="images/nsls2logo75.png" alt="NSLS II"></div>
+
+<h1>NSLS II Operations Status</h1>
+
+<div class="stat-panel">
+<div class="head">Beam Current: ##BEAMCURRENT##</div>
+<div class="subhead">Beam Lifetime: ##BEAMLIFETIME##</div>
+<div class="subhead">Daily Amp Hours: ##DAILYAMPHOURS##</div>
+<div class="stat-line">
+<div class="opmode">Operating Mode: ##OPMODE##</div><div class="shuttermode">##SHUTTERSMODE##</div>
+</div>
+</div>
+<div class="history-graph"><img src="status-graph.png" alt=""> </div>
+<div class="message-panel">
+<div class="ticker">Message From Operations</div>
+<div class="message">
+##OPMESSAGE-LINE1## <br/>
+##OPMESSAGE-LINE2##
+</div>
+<div class="ticker">##DATEANDTIME##</div>
+</div>
+
+</div>
+
+</body>
+</html>
