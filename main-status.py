@@ -119,6 +119,8 @@ header.close
 
 #Get the PVs for the page
 
+
+
 beami=caget('SR:C03-BI{DCCT:1}I:Total-I')
 ltime=caget('SR-BI{}BPM_lifetimeAve-I')
 amphrs=caget('SR:C03-BI{DCCT:1}Dosage:1d-I_')
@@ -127,6 +129,10 @@ shutmode=caget('SR-EPS{PLC:1}Sts:MstrSh-Sts')
 opline1=caget('OP{1}Message')
 opline2=caget('OP{2}Message')
 
+
+opline1 = np.asarray(opline1)
+opline2 = np.asarray(opline2)
+
 #Intialize the Message Strings
 
 message1=""
@@ -134,13 +140,15 @@ message2=""
 
 #Turn the arrays of characters into Message strings
 
-for item in opline1:
-	message1=message1+chr(item)
+if opline1.any():
+	for item in opline1:
+		message1=message1+chr(item)
 
-for item in opline2:
-	message2=message2+chr(item)
+if opline2.any():
+	for item in opline2:
+		message2=message2+chr(item)
 
-dateandtime=caget('OP-CT{IOC:opsum}:TOD')
+qdtls2=caget('OP-CT{IOC:opsum}:TOD')
 
 #Set up the lists for the various machine states and colors
 
@@ -166,7 +174,7 @@ print '<div class="ticker">Message From Operations</div>'
 print '<div class="message">'
 print '%s <br/> %s' % (message1,message2)
 print '</div>'
-print '<div class="ticker">%s</div>' % dateandtime
+print '<div class="ticker">%s</div>' % qdtls2
 
 
 print '</div></div></body></html>'
